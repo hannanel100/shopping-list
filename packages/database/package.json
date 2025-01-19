@@ -10,12 +10,11 @@
   ],
   "exports": {
     ".": "./src/index.ts"
-  },  
+  },
   "scripts": {
     "build": "tsup",
     "clean": "rimraf .turbo node_modules dist",
     "db:push": "prisma db push --skip-generate",
-    "dev": "tsup --watch",
     "format": "prisma format",
     "lint": "eslint \"src/**/*.ts\"",
     "prebuild": "npm run db:generate",

@@ -1,0 +1,14 @@
+{
+  "name": "@repo/recipe-client",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "@repo/recipe-types": "*"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "typescript": "^*"
+  }
+}

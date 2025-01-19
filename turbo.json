@@ -3,7 +3,7 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^db:generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -26,6 +26,14 @@
     },
     "db:deploy": {
       "cache": false
+    },
+    "recipe-parser-service#build": {
+      "env": ["OPENAI_API_KEY"],
+      "outputs": ["dist/**"]
+    },
+    "recipe-parser-service#dev": {
+      "env": ["OPENAI_API_KEY"],
+      "persistent": true
     }
   }
 }

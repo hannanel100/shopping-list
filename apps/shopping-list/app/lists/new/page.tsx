@@ -17,7 +17,7 @@ export default function NewList() {
 
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name");
-
+    console.log(name);
     try {
       const response = await fetch("/api/lists", {
         method: "POST",
