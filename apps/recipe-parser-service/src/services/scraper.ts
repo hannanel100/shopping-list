@@ -14,6 +14,6 @@ export async function scrapeWebpage(url: string): Promise<string> {
 
     // Get the main content
     const content = $('main').text() || $('article').text() || $('body').text()
-    console.log(content.trim())
+
     return content.trim()
 }
