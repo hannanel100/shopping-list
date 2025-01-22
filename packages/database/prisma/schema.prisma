@@ -28,3 +28,16 @@ model Item {
 
   @@index([listId])
 } 
+
+model ParsedRecipe {
+    id            String   @id @default(cuid())
+    url           String?  @unique
+    content       String   @db.Text
+    contentHash   String   @unique
+    ingredients   String[]
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+
+    @@index([url])
+    @@index([contentHash])
+}

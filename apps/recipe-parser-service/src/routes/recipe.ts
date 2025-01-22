@@ -19,7 +19,7 @@ router.post('/parse', async (c) => {
 
     const { url } = result.data
     const content = await scrapeWebpage(url)
-    const ingredients = await extractIngredients(content)
+    const ingredients = await extractIngredients(content, url)
 
     return c.json({ ingredients })
 })

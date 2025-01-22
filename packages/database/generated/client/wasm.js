@@ -134,6 +134,16 @@ exports.Prisma.ItemScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ParsedRecipeScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  content: 'content',
+  contentHash: 'contentHash',
+  ingredients: 'ingredients',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -152,7 +162,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   ShoppingList: 'ShoppingList',
-  Item: 'Item'
+  Item: 'Item',
+  ParsedRecipe: 'ParsedRecipe'
 };
 
 /**
