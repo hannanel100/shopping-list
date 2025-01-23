@@ -63,7 +63,7 @@ async function parseAndStore(content: string, url?: string) {
 
     const { object } = await generateObject({
         schema,
-        model: anthropic("claude-3-5-haiku-latest"),
+        model: anthropic("claude-3-haiku-20240307"),
         prompt: `Extract only the ingredients list from the following recipe content. 
       The ingredients should be in the following format:
       [
@@ -75,6 +75,8 @@ async function parseAndStore(content: string, url?: string) {
       The ingredients are intended to be used in a shopping list, so they should only name the ingredients, not the quantities or measurements.
       Return the ingredients as a JSON array of strings.
       If no ingredients are found, return an empty array.
+      Disregard water as an ingredient.
+      Always include simplify the ingredients. for example: if a recipe calls for strong brewed coffee, just add coffee as an ingredient.
       Recipe content:
       ${content}`,
     });
