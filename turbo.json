@@ -18,13 +18,16 @@
       "persistent": true
     },
     "db:generate": {
+      "env": ["ANTHROPIC_API_KEY", "PULSE_API_KEY"],
       "cache": false
     },
     "db:migrate": {
+      "env": ["ANTHROPIC_API_KEY", "PULSE_API_KEY"],
       "cache": false,
       "persistent": true
     },
     "db:deploy": {
+      "env": ["ANTHROPIC_API_KEY", "PULSE_API_KEY"],
       "cache": false
     },
     "recipe-parser-service#build": {
