@@ -9,6 +9,7 @@
     "module": "ES2020",
     "types": ["node"],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "outDir": "./dist"
   }
 }
