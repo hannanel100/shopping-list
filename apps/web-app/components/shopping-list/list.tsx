@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingList, Item } from "@prisma/client";
+import { ShoppingList, Item } from "@repo/database";
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";

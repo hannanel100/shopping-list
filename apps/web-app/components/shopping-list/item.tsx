@@ -1,6 +1,6 @@
 "use client";
 
-import { Item } from "@prisma/client";
+import { Item } from "@repo/database";
 import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
 import { Trash2 } from "lucide-react";

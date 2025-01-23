@@ -148,7 +148,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\hanna\\OneDrive\\Documents\\code\\projects\\shopping-list\\packages\\database\\generated\\client",
+      "value": "C:\\Users\\hanna\\Documents\\projects\\shopping-list\\packages\\database\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -162,7 +162,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\hanna\\OneDrive\\Documents\\code\\projects\\shopping-list\\packages\\database\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\hanna\\Documents\\projects\\shopping-list\\packages\\database\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

@@ -1,8 +1,7 @@
-import { prisma } from "@repo/database";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import { ShoppingList, Item } from "@prisma/client";
+import { prisma, ShoppingList, Item } from "@repo/database";
 
 type ListWithItems = ShoppingList & {
   items: Item[];

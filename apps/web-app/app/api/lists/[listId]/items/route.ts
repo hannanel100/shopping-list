@@ -10,15 +10,14 @@ const createItemsSchema = z.object({
     })
   ),
 });
+type Params = Promise<{ listId: string }>;
 
-export async function GET(
-  request: Request,
-  { params }: { params: { listId: string } }
-) {
+export async function GET(request: Request, { params }: { params: Params }) {
+  const listId = (await params).listId;
   try {
     const items = await prisma.item.findMany({
       where: {
-        listId: params.listId,
+        listId: listId,
       },
       orderBy: {
         createdAt: "desc",
@@ -33,10 +32,8 @@ export async function GET(
   }
 }
 
-export async function POST(
-  request: Request,
-  { params }: { params: { listId: string } }
-) {
+export async function POST(request: Request, { params }: { params: Params }) {
+  const listId = (await params).listId;
   try {
     const json = await request.json();
     const parsed = createItemsSchema.safeParse(json);
@@ -52,7 +49,7 @@ export async function POST(
           data: {
             name: item.name,
             quantity: item.quantity,
-            listId: params.listId,
+            listId: listId,
           },
         })
       )
@@ -61,20 +58,21 @@ export async function POST(
     return NextResponse.json(items);
   } catch (error) {
     console.error("Error creating items:", error);
-    return NextResponse.json({ error: "Error creating items" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error creating items" },
+      { status: 500 }
+    );
   }
 }
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { listId: string } }
-) {
+export async function PUT(request: Request, { params }: { params: Params }) {
+  const listId = (await params).listId;
   try {
     const json = await request.json();
     const item = await prisma.item.update({
       where: {
         id: json.id,
-        listId: params.listId,
+        listId: listId,
       },
       data: {
         checked: json.checked,
