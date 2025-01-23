@@ -7,6 +7,10 @@ export const dynamic = 'force-dynamic'
 
 const createListSchema = z.object({
     name: z.string().min(1, 'List name is required'),
+    items: z.array(z.object({
+        name: z.string(),
+        quantity: z.string().optional()
+    })).optional()
 })
 
 export async function GET() {
@@ -46,7 +50,13 @@ export async function POST(request: Request) {
             const list = await prisma.shoppingList.create({
                 data: {
                     name: parsed.data.name,
+                    items: parsed.data.items ? {
+                        create: parsed.data.items
+                    } : undefined
                 },
+                include: {
+                    items: true
+                }
             })
             return NextResponse.json(list)
         } catch (dbError) {

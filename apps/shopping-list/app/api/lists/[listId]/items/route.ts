@@ -1,5 +1,15 @@
 import { prisma } from "@repo/database";
 import { NextResponse } from "next/server";
+import { z } from "zod";
+
+const createItemsSchema = z.object({
+  items: z.array(
+    z.object({
+      name: z.string().min(1, "Item name is required"),
+      quantity: z.string().optional(),
+    })
+  ),
+});
 
 export async function GET(
   request: Request,
@@ -29,16 +39,29 @@ export async function POST(
 ) {
   try {
     const json = await request.json();
-    const item = await prisma.item.create({
-      data: {
-        name: json.name,
-        quantity: json.quantity,
-        listId: params.listId,
-      },
-    });
-    return NextResponse.json(item);
+    const parsed = createItemsSchema.safeParse(json);
+
+    if (!parsed.success) {
+      const errorMessage = parsed.error.errors[0]?.message || "Invalid input";
+      return NextResponse.json({ error: errorMessage }, { status: 400 });
+    }
+
+    const items = await prisma.$transaction(
+      parsed.data.items.map((item) =>
+        prisma.item.create({
+          data: {
+            name: item.name,
+            quantity: item.quantity,
+            listId: params.listId,
+          },
+        })
+      )
+    );
+
+    return NextResponse.json(items);
   } catch (error) {
-    return NextResponse.json({ error: "Error creating item" }, { status: 500 });
+    console.error("Error creating items:", error);
+    return NextResponse.json({ error: "Error creating items" }, { status: 500 });
   }
 }
 
