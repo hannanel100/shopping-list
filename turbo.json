@@ -28,11 +28,11 @@
       "cache": false
     },
     "recipe-parser-service#build": {
-      "env": ["OPENAI_API_KEY"],
+      "env": ["ANTHROPIC_API_KEY"],
       "outputs": ["dist/**"]
     },
     "recipe-parser-service#dev": {
-      "env": ["OPENAI_API_KEY"],
+      "env": ["ANTHROPIC_API_KEY"],
       "persistent": true
     }
   }
